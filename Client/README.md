@@ -14,6 +14,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### Environment: API Base URL
+The frontend reads the API base url from an environment variable during build time. Create a `.env` file (or set the Vite environment variable) with:
+
+```
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+When your backend is deployed, set the `VITE_API_BASE_URL` to the public backend URL (example: https://api.yourdomain.com) in the environment or in Netlify site settings so the deployed frontend calls the correct API.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
