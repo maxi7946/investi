@@ -1,11 +1,12 @@
 /* Modern auth UI styles with animation */
 :root{
-  --primary:#5b6cff; /* blue */
-  --accent:#ff6fb3; /* pink */
-  --bg: #f5f8ff;
-  --card: #ffffff;
-  --text:#121420;
-  --muted:#6b7280;
+  /* Dark theme: Black + Orange */
+  --primary: #ff7a00; /* bright orange */
+  --accent: #ff5722;  /* deep orange */
+  --bg: #07070a;      /* near-black background */
+  --card: #0f1418;    /* darker card background */
+  --text: #f7f7f7;    /* light text */
+  --muted: #9aa2a8;   /* muted text */
 }
 
 /* page container */
@@ -15,7 +16,7 @@
   justify-content:center;
   min-height:calc(100vh - 80px);
   padding:40px 20px;
-  background: linear-gradient(180deg, #eef2ff 0%, #f5fbff 100%);
+  background: radial-gradient(1200px 800px at 10% 10%, rgba(255,122,0,0.06), transparent), linear-gradient(180deg, #061018 0%, #07070a 100%);
 }
 
 .auth-card{
@@ -26,10 +27,11 @@
   gap:24px;
   background:var(--card);
   border-radius:12px;
-  box-shadow:0 10px 30px rgba(45, 60, 90, 0.08);
+  box-shadow:0 12px 40px rgba(0,0,0,0.60);
   overflow:hidden;
   transform: translateY(8px);
   animation: floatIn 0.6s ease-out both;
+  border: 1px solid rgba(255,122,0,0.06);
 }
 
 @media (max-width:900px){
@@ -38,7 +40,7 @@
 
 /* left side: branding or illustration */
 .auth-visual{
-  background-image: linear-gradient(135deg, rgba(91,108,255,0.08), rgba(255,111,179,0.06));
+  background-image: radial-gradient(circle at 20% 20%, rgba(255,122,0,0.06), rgba(255,87,34,0.04)), linear-gradient(180deg, rgba(255,122,0,0.02), rgba(0,0,0,0));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -59,49 +61,50 @@
 .form-label{ display:block; font-size:0.9rem; color:var(--muted); margin-bottom:6px; }
 .input-field{
   width:100%;
-  padding:10px 12px;
+  padding:12px 14px;
   border-radius:8px;
-  border:1px solid #e6e9f2;
+  border:1px solid rgba(255,255,255,0.06);
   outline:none;
   font-size:0.95rem;
   transition: all .18s ease;
   background: transparent;
+  color: var(--text);
 }
 .input-field:focus{
   border-color: var(--primary);
-  box-shadow: 0 6px 18px rgba(91,108,255,0.12);
+  box-shadow: 0 6px 18px rgba(255,122,0,0.16);
   transform: translateY(-1px);
 }
 
 /* Fancy button */
 .btn-fancy{
   display:inline-block;
-  padding:10px 16px;
+  padding:10px 18px;
   border-radius:10px;
   font-weight:700;
   letter-spacing:0.3px;
   cursor:pointer;
   border: none;
   background: linear-gradient(90deg, var(--primary), var(--accent));
-  color:white;
-  box-shadow: 0 8px 16px rgba(91,108,255,0.12);
+  color:var(--card);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 6px 18px rgba(255,122,0,0.08);
   transition: transform .14s ease, box-shadow .14s ease;
 }
-.btn-fancy:hover{ transform: translateY(-4px); box-shadow:0 16px 30px rgba(91,108,255,0.12); }
+.btn-fancy:hover{ transform: translateY(-4px); box-shadow:0 24px 40px rgba(255,122,0,0.14); }
 .btn-fancy:active{ transform: translateY(0); }
 
 /* Secondary button */
 .btn-outline{
   padding:10px 16px;
   border-radius:10px;
-  border:1px solid rgba(17,24,39,0.08);
+  border:1px solid rgba(255,255,255,0.06);
   background:transparent; cursor:pointer; color:var(--text);
 }
 
 /* Social buttons */
 .social-row{ display:flex; gap:8px; margin-top:10px; }
-.social-btn{ flex:1; padding:8px; display:flex; align-items:center; justify-content:center; gap:8px; border-radius:8px; border:1px solid #eee; background:#fff; cursor:pointer; }
-.social-btn:hover{ box-shadow:0 6px 18px rgba(0,0,0,.06); transform: translateY(-3px); }
+.social-btn{ flex:1; padding:8px; display:flex; align-items:center; justify-content:center; gap:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--text); cursor:pointer; }
+.social-btn:hover{ box-shadow:0 6px 18px rgba(255,122,0,0.06); transform: translateY(-3px); }
 
 /* small link */
 .link-muted{ color:var(--primary); font-weight:600; text-decoration:none }
@@ -113,7 +116,7 @@
 @keyframes floatIn{ from{ opacity:0; transform: translateY(12px);} to{ opacity:1; transform: translateY(0);} }
 
 /* subtle focus ring for accessibility */
-.input-field:focus-visible { box-shadow: 0 0 0 4px rgba(91,108,255,0.10); }
+.input-field:focus-visible { box-shadow: 0 0 0 6px rgba(255,122,0,0.12); }
 
 /* small footer */
 .auth-footer{ margin-top:12px; text-align:center; color:var(--muted); font-size:0.9rem; }
