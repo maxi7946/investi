@@ -1,0 +1,244 @@
+/* =================================================================== */
+
+/* ORANGE #fd961a
+====================================================================== */
+
+#main-slide .carousel-control i,
+.about-content ul.nav.nav-tabs li.active a,
+a,
+a:active,
+a:focus,
+a:hover,
+.breadcrumb>li a:hover,
+.btn-primary.btn-pricing,
+.button-video,
+.contact-page-info .contact-info-box i.big-icon,
+.countdown-amount,
+.dropdown-menu li a:focus,
+.dropdown-menu li a:hover,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>.dropdown-menu>.active>a,
+.facts .facts-content .heading-facts h2 span,
+.facts-footer>div h5,
+.feature .feature-icon,
+.footer .bottom-footer p span,
+.footer .top-footer h4,
+h4.panel-title a,
+.latest-post .post-title a:hover,
+.navbar-nav .fa-search:active,
+.navbar-nav .fa-search:focus,
+.navbar-nav .fa-search:hover,
+.payment .tooltip-text,
+.shop-cart .btn.btn-primary.btn-coupon:active,
+.shop-cart .btn.btn-primary.btn-coupon:focus,
+.shop-cart .btn.btn-primary.btn-coupon:hover,
+.shop-cart .btn.btn-update-cart:active,
+.shop-cart .btn.btn-update-cart:focus,
+.shop-cart .btn.btn-update-cart:hover,
+.shop-cart .btn.btn-coupon:hover,
+.shop-cart .table .icon-delete-product:active,
+.shop-cart .table .icon-delete-product:focus,
+.shop-cart .table .icon-delete-product:hover,
+.sidebar ul.nav-tabs li a:hover,
+.site-navigation ul.nav.nav-tabs li.active a,
+.site-navigation ul.nav.nav-tabs li.active a:hover,
+.slider.btn-primary,
+.slider-text .slide-title span,
+.team .social-icons ul.social li a:hover:before,
+.team-member-caption .list li a:hover,
+.title-head span,
+ul.navbar-nav>li.active>a,
+ul.navbar-nav>li:hover>a,
+ul.user li.sign-in a,
+.user-auth>div:nth-child(2) .form-container .form-group a:hover,
+.widget.recent-posts .entry-title a:hover,
+body.blog .meta a,
+body.blog .meta span i,
+body.blog article h4:hover,
+body.light .dropdown-menu>.active>a,
+body.light .latest-post .post-title a:hover,
+body.light .navbar-nav .fa-search:active,
+body.light .navbar-nav .fa-search:focus,
+body.light .navbar-nav .fa-search:hover,
+body.light .navbar-nav>li:hover>a,
+body.light .shop-cart .table .icon-delete-product:active,
+body.light .shop-cart .table .icon-delete-product:focus,
+body.light .shop-cart .table .icon-delete-product:hover,
+body.light.blog .sidebar ul.nav-tabs li a:hover,
+body.light.blog .widget.recent-posts .entry-title a:hover,
+blockquote footer span,
+blockquote p:after,
+blockquote p:before,
+.bitcoin-calculator-section h3 span,
+.comments-list .comment-reply {
+    color: #fd961a;
+}
+
+.btn-primary,
+.title-head-subtitle p:before,
+.title-head-subtitle p:after,
+body.light ul.user li.sign-in a:hover,
+ul.user li.sign-in a:hover,
+.navbar-toggle,
+.slider.btn-primary:hover,
+.pricing-switcher .switch,
+.bitcoin-calculator .form-input.select-currency,
+.bitcoin-calculator .form-info,
+.team-member:hover .team-member-caption,
+.select-primary~.select2 .select2-selection__rendered,
+.select-primary~.select2 .select2-selection__rendered:active,
+.select-primary~.select2 .select2-selection__rendered:focus,
+.select-primary~.select2 .select2-selection__rendered:hover,
+.select-primary-dropdown,
+#carousel-testimonials .carousel-indicators li.active,
+.widget-tags ul>li a:hover,
+body.blog .pagination li.active a,
+.facts,
+.call-action-all .action-btn .btn-primary {
+    background: #fd961a;
+}
+
+ul.user li.sign-in a:hover,
+.bitcoin-calculator .form-info,
+.widget-tags ul>li a:hover,
+body.blog .pagination li.active a,
+ul.user li.sign-in a,
+.slider.btn-primary,
+.btn-primary.btn-pricing,
+.shop-cart .btn.btn-primary.btn-coupon:hover,
+.shop-cart .btn.btn-primary.btn-coupon:focus,
+.shop-cart .btn.btn-primary.btn-coupon:active,
+.shop-cart .btn.btn-update-cart:hover,
+.shop-cart .btn.btn-update-cart:focus,
+.shop-cart .btn.btn-update-cart:active {
+    border: 1px solid #fd961a;
+}
+
+.bitcoin-calculator span.select2,
+.select2-container--default .select2-selection--single {
+    border-bottom: 1px solid #fd961a;
+}
+
+body.light ul.user li.sign-in a:hover,
+.slider.btn-primary:hover {
+    border: 1px solid #fd961a;
+}
+
+.team-member-caption {
+    border-top: 3px solid #fd961a;
+}
+
+.button-video:after {
+    border-color: transparent transparent transparent #fd961a;
+}
+
+.btcwdgt-chart .btcwdgt-header h2 {
+    background-color: #fd961a !important;
+}
+
+.path {
+    stroke: #fd961a;
+}
+
+@-webkit-keyframes dash {
+    0% {
+        stroke-dashoffset: 2000;
+        opacity: 0;
+        stroke: #fd961a;
+    }
+    15% {
+        opacity: 1;
+        stroke: #fd961a;
+    }
+    70% {
+        opacity: 1;
+        stroke: #fd961a;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+        stroke: #fd961a;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 2000;
+        opacity: 0;
+        stroke: #fd961a;
+    }
+    15% {
+        opacity: 1;
+        stroke: #fd961a;
+    }
+    70% {
+        opacity: 1;
+        stroke: #fd961a;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+        stroke: #fd961a;
+    }
+}
+
+.btcwdgt.btcwdgt-s-price .btcwdgt-body ul li {
+    color: #fd961a !important;
+}
+
+.btcwdgt.btcwdgt-chart .btcwdgt-header h2,
+.btcwdgt.btcwdgt-chart .btcwdgt-header .stats {
+    background-color: #fd961a !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: rgba(253, 150, 26, .9) !important;
+    outline: none !important;
+}
+
+.slider.btn-primary:focus,
+.slider.btn-primary:active,
+ul.user li.sign-in a.btn-primary:focus,
+ul.user li.sign-in a.btn-primary:active {
+    border: 1px solid #fd961a !important;
+}
+
+@media (max-width: 767px) {
+    ul.navbar-nav>li.active,
+    ul.navbar-nav>li:not(.search):hover {
+        background: transparent;
+    }
+    .site-navigation.fixed ul.navbar-nav {
+        border: 0;
+    }
+    .site-navigation {
+        border-bottom: 1px solid #333;
+    }
+    body.light .navbar-collapse ul.navbar-nav>li.active>a,
+    .navbar-collapse ul.navbar-nav>li.active>a {
+        color: #fd961a;
+    }
+}
+
+@media (max-width: 570px) {
+    .about-content ul.nav.nav-tabs li.active a {
+        color: #fff;
+    }
+    ul.nav.nav-tabs li.active a:hover,
+    ul.nav.nav-tabs li.active a {
+        background: #fd961a;
+    }
+    ul.nav.nav-tabs li.active {
+        border-bottom: 1px solid #fd961a;
+    }
+    .facts {
+        background: #222;
+    }
+    body.light .facts {
+        background: #e7e7e7;
+    }
+}

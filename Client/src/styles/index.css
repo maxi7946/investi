@@ -1,0 +1,21 @@
+/* Import all CSS files */
+
+/* Global styles */
+@import './global.css';
+
+/* Main styles */
+@import './style.css';
+
+/* Style switcher */
+@import './styleswitcher.css';
+
+/* Skins - load as needed */
+@import './skins/blue.css';
+@import './skins/green.css';
+@import './skins/orange.css';
+
+/* Bootstrap and other libraries */
+@import './bootstrap.min.css';
+@import './font-awesome.min.css';
+@import './magnific-popup.css';
+@import './select2.min.css';

@@ -1,0 +1,45 @@
+# Node modules
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+Client/dist/
+Client/build/
+server/dist/
+
+# Env files
+.env
+.env.*
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Misc
+coverage/
+.cache/
+.vite/
+*.tgz
+
+# Ignore local database files
+*.db
+
+# Ignore generated assets
+assets/*.map
+
+# Ignore sensitive or local-only files
+secret-*.json
+
+# Keep yarn lock if present
+!yarn.lock
