@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
+import '../../styles/auth.css';
 
 /**
  * Login component that displays the login form for user authentication
@@ -124,144 +125,84 @@ const Login = () => {
   }
 
   return (
-    <section className={`login-section ${darkMode ? 'dark-mode' : ''}`}>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 col-md-offset-3">
-            <div className="login-form">
-              <div className="form-header">
-                <h2>Sign In to IFX Market Ltd.</h2>
-                <div className="form-controls">
-                  <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                  </select>
-                  <button onClick={toggleDarkMode} className="btn btn-sm">
-                    {darkMode ? '☀️' : '🌙'}
-                  </button>
-                </div>
-              </div>
-
-              {sessionTimeout && (
-                <div className="alert alert-warning">
-                  Your session has expired. Please log in again.
-                </div>
-              )}
-
-              {error && <div className="alert alert-danger">{error}</div>}
-
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="form-control"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    disabled={loading}
-                  />
-                  <small className="form-text text-muted">
-                    <i className="fa fa-check-circle text-success"></i> Email verified
-                  </small>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <div className="input-group">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      id="password"
-                      className="form-control"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      disabled={loading}
-                    />
-                    <div className="input-group-append">
-                      <button
-                        type="button"
-                        className="btn btn-outline-secondary"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        <i className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <div className="form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="rememberMe"
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                    />
-                    <label className="form-check-label" htmlFor="rememberMe">
-                      Remember Me
-                    </label>
-                  </div>
-                </div>
-
-
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                  {loading ? (
-                    <>
-                      <i className="fa fa-spinner fa-spin"></i> Signing In...
-                    </>
-                  ) : (
-                    <>
-                      <i className="fa fa-user"></i> Sign In
-                    </>
-                  )}
-                </button>
-              </form>
-
-              <div className="text-center mt-3">
-                <button onClick={handleForgotPassword} className="btn btn-link">
-                  Forgot Password?
-                </button>
-              </div>
-
-              <div className="social-login mt-3">
-                <p>Or sign in with:</p>
-                <div className="social-buttons">
-                  <button onClick={() => handleSocialLogin('Google')} className="btn btn-outline-danger">
-                    <i className="fa fa-google"></i> Google
-                  </button>
-                  <button onClick={() => handleSocialLogin('Apple')} className="btn btn-outline-dark">
-                    <i className="fa fa-apple"></i> Apple
-                  </button>
-                  <button onClick={() => handleSocialLogin('Microsoft')} className="btn btn-outline-primary">
-                    <i className="fa fa-windows"></i> Microsoft
-                  </button>
-                </div>
-                <div className="mt-2">
-                  <small className="text-muted">
-                    Note: Google login requires proper OAuth credentials to be configured in the server.
-                  </small>
-                </div>
-              </div>
-
-              <div className="biometric-login mt-3">
-                <button onClick={handleBiometricLogin} className="btn btn-outline-info btn-block">
-                  <i className="fa fa-fingerprint"></i> Biometric Login
-                </button>
-              </div>
-
-              <div className="terms-links mt-3">
-                <a href="#" className="text-muted">Terms & Conditions</a> | <a href="#" className="text-muted">Privacy Policy</a>
-              </div>
-
-              <p className="text-center mt-3">
-                Don't have an account? <Link to="/signup">Register here</Link>
-              </p>
+    <section className={`auth-container ${darkMode ? 'dark-mode' : ''}`}>
+      <div className="auth-card">
+        <div className="auth-visual">
+          <div className="brand">
+            <h2>Welcome Back</h2>
+            <p>Sign in to manage your portfolio</p>
+            <p style={{marginTop:10}}><small className="text-muted">Demo: admin@example.com / admin</small></p>
+          </div>
+        </div>
+        <div className="auth-form">
+          <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+            <div>
+              <h3 className="auth-title">Sign In</h3>
+              <div className="auth-sub">Sign in to continue to your investments dashboard.</div>
+            </div>
+            <div style={{display:'flex', gap:8}}>
+              <select value={language} onChange={(e) => setLanguage(e.target.value)} className="btn-outline">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+              </select>
+              <button onClick={toggleDarkMode} className="btn-outline">{darkMode ? '☀️' : '🌙'}</button>
             </div>
           </div>
+
+          {sessionTimeout && <div className="alert alert-warning">Your session has expired. Please log in again.</div>}
+          {error && <div className="alert alert-danger">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
+            <div className="form-row">
+              <label className="form-label" htmlFor="email">Email address</label>
+              <input id="email" type="email" className="input-field" value={email} onChange={(e)=>setEmail(e.target.value)} required disabled={loading} />
+              <small className="form-help"><i className="fa fa-check-circle text-success"></i> Email verified</small>
+            </div>
+
+            <div className="form-row">
+              <label className="form-label" htmlFor="password">Password</label>
+              <div style={{display:'flex', gap:8}}>
+                <input id="password" type={showPassword ? 'text' : 'password'} className="input-field" value={password} onChange={(e)=>setPassword(e.target.value)} required disabled={loading} />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="btn-outline" aria-label="Toggle password visibility"><i className={`fa ${showPassword? 'fa-eye-slash':'fa-eye'}`}></i></button>
+              </div>
+            </div>
+
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:8}}>
+              <div style={{display:'flex', alignItems:'center', gap:8}}>
+                <input id="rememberMe" type="checkbox" checked={rememberMe} onChange={(e)=>setRememberMe(e.target.checked)} />
+                <label htmlFor="rememberMe" style={{color:'var(--muted)'}}>Remember Me</label>
+              </div>
+              <button type="button" onClick={handleForgotPassword} className="btn-outline">Forgot?</button>
+            </div>
+
+            <div style={{marginTop:16}}>
+              <button type="submit" className="btn-fancy" disabled={loading}>
+                {loading ? <><i className="fa fa-spinner fa-spin"></i> Signing In...</> : <><i className="fa fa-user"></i> Sign In</>}
+              </button>
+            </div>
+          </form>
+
+          <div style={{marginTop:16}}>
+            <div className="social-row">
+              <button className="social-btn" onClick={()=>handleSocialLogin('Google')}><i className="fa fa-google"></i> Google</button>
+              <button className="social-btn" onClick={()=>handleSocialLogin('Apple')}><i className="fa fa-apple"></i> Apple</button>
+              <button className="social-btn" onClick={()=>handleSocialLogin('Microsoft')}><i className="fa fa-windows"></i> Microsoft</button>
+            </div>
+            <div className="auth-footer">Note: Google login requires proper OAuth credentials configured server-side.</div>
+          </div>
+
+          <div style={{marginTop:12}}>
+            <button onClick={handleBiometricLogin} className="btn-outline" style={{width:'100%'}}><i className="fa fa-fingerprint"></i> Biometric Login</button>
+          </div>
+
+          <div style={{marginTop:12}}>
+            <a href="#" className="link-muted">Terms & Conditions</a> &nbsp; | &nbsp; <a href="#" className="link-muted">Privacy Policy</a>
+          </div>
+
+          <p style={{textAlign:'center', marginTop:12}}>
+            Don't have an account? <Link to="/signup" className="link-muted">Create an account</Link>
+          </p>
         </div>
       </div>
     </section>

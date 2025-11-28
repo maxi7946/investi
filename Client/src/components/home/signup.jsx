@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
+import '../../styles/auth.css';
 
 /**
  * Signup component that displays the signup form for user registration
@@ -85,17 +86,19 @@ const Signup = () => {
 
   if (success) {
     return (
-      <section className="signup-section">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 col-md-offset-3">
-              <div className="signup-form text-center">
-                <i className="fa fa-check-circle text-success" style={{ fontSize: '4rem' }}></i>
-                <h2>Registration Successful!</h2>
-                <p>Please check your email to verify your account.</p>
-                <p>You will be redirected to the login page shortly.</p>
-              </div>
+      <section className="auth-container">
+        <div className="auth-card">
+          <div className="auth-visual">
+            <div className="brand">
+              <h2>Welcome!</h2>
+              <p>Registration completed successfully.</p>
             </div>
+          </div>
+          <div className="auth-form" style={{textAlign:'center'}}>
+            <i className="fa fa-check-circle text-success" style={{ fontSize: '4rem' }}></i>
+            <h2>Registration Successful!</h2>
+            <p>Please check your email to verify your account.</p>
+            <p>You will be redirected to the login page shortly.</p>
           </div>
         </div>
       </section>
@@ -103,219 +106,75 @@ const Signup = () => {
   }
 
   return (
-    <section className="signup-section">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 col-md-offset-2">
-            <div className="signup-form">
-              <h2>Register with IFX Market Ltd.</h2>
-              <p>Create your account to start investing</p>
-
-              {error && <div className="alert alert-danger">{error}</div>}
-
-              <form onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="firstName">First Name</label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        className="form-control"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        required
-                        disabled={loading}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="lastName">Last Name</label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        className="form-control"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        required
-                        disabled={loading}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <div className="input-group">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="form-control"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      disabled={loading}
-                    />
-                    <div className="input-group-append">
-                      <button
-                        type="button"
-                        className="btn btn-outline-secondary"
-                        onClick={handleEmailVerification}
-                        disabled={loading || !formData.email}
-                      >
-                        {emailVerified ? (
-                          <i className="fa fa-check text-success"></i>
-                        ) : (
-                          'Verify'
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                  {emailVerified && (
-                    <small className="form-text text-success">
-                      <i className="fa fa-check-circle"></i> Email verified
-                    </small>
-                  )}
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="phone">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="form-control"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+1 (555) 123-4567"
-                    disabled={loading}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="dateOfBirth">Date of Birth</label>
-                  <input
-                    type="date"
-                    id="dateOfBirth"
-                    name="dateOfBirth"
-                    className="form-control"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
-                    disabled={loading}
-                  />
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        className="form-control"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                        disabled={loading}
-                        minLength="8"
-                      />
-                      <small className="form-text text-muted">
-                        Minimum 8 characters, include uppercase, lowercase, and numbers
-                      </small>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="confirmPassword">Confirm Password</label>
-                      <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        className="form-control"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        required
-                        disabled={loading}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <div className="form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="twoFAEnabled"
-                      name="twoFAEnabled"
-                      checked={formData.twoFAEnabled}
-                      onChange={handleChange}
-                      disabled={loading}
-                    />
-                    <label className="form-check-label" htmlFor="twoFAEnabled">
-                      Enable Two-Factor Authentication (Recommended)
-                    </label>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <div className="form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="agreeToTerms"
-                      name="agreeToTerms"
-                      checked={formData.agreeToTerms}
-                      onChange={handleChange}
-                      required
-                      disabled={loading}
-                    />
-                    <label className="form-check-label" htmlFor="agreeToTerms">
-                      I agree to the <a href="#" target="_blank">Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <div className="form-check">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="subscribeNewsletter"
-                      name="subscribeNewsletter"
-                      checked={formData.subscribeNewsletter}
-                      onChange={handleChange}
-                      disabled={loading}
-                    />
-                    <label className="form-check-label" htmlFor="subscribeNewsletter">
-                      Subscribe to our newsletter for market updates
-                    </label>
-                  </div>
-                </div>
-
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                  {loading ? (
-                    <>
-                      <i className="fa fa-spinner fa-spin"></i> Creating Account...
-                    </>
-                  ) : (
-                    <>
-                      <i className="fa fa-user-plus"></i> Create Account
-                    </>
-                  )}
-                </button>
-              </form>
-
-              <p className="text-center mt-3">
-                Already have an account? <Link to="/login">Sign in here</Link>
-              </p>
-            </div>
+    <section className="auth-container">
+      <div className="auth-card">
+        <div className="auth-visual">
+          <div className="brand">
+            <h2>Start your journey</h2>
+            <p>Create an account and start investing</p>
           </div>
+        </div>
+        <div className="auth-form">
+          <h3 className="auth-title">Create an Account</h3>
+          <div className="auth-sub">Fill in the details to sign up to IFX Market Ltd.</div>
+
+          {error && <div className="alert alert-danger">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
+            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:12}}>
+              <div>
+                <label className="form-label" htmlFor="firstName">First Name</label>
+                <input id="firstName" name="firstName" className="input-field" value={formData.firstName} onChange={handleChange} required disabled={loading} />
+              </div>
+              <div>
+                <label className="form-label" htmlFor="lastName">Last Name</label>
+                <input id="lastName" name="lastName" className="input-field" value={formData.lastName} onChange={handleChange} required disabled={loading} />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <label className="form-label" htmlFor="email">Email Address</label>
+              <div style={{display:'flex', gap:8}}>
+                <input id="email" name="email" className="input-field" type="email" value={formData.email} onChange={handleChange} required disabled={loading} />
+                <button type="button" className="btn-outline" onClick={handleEmailVerification} disabled={loading || !formData.email}>{emailVerified? <i className="fa fa-check text-success"></i>:'Verify'}</button>
+              </div>
+              {emailVerified && <small className="form-help"> <i className="fa fa-check-circle"></i> Email verified</small>}
+            </div>
+
+            <div className="form-row">
+              <label className="form-label" htmlFor="phone">Phone</label>
+              <input id="phone" name="phone" className="input-field" type="tel" value={formData.phone} onChange={handleChange} placeholder="+1 (555) 123-4567" disabled={loading} />
+            </div>
+
+            <div className="form-row">
+              <label className="form-label" htmlFor="dateOfBirth">Date of Birth</label>
+              <input id="dateOfBirth" name="dateOfBirth" className="input-field" type="date" value={formData.dateOfBirth} onChange={handleChange} disabled={loading} />
+            </div>
+
+            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:12}}>
+              <div>
+                <label className="form-label" htmlFor="password">Password</label>
+                <input id="password" name="password" className="input-field" type="password" value={formData.password} onChange={handleChange} required disabled={loading} minLength={8} />
+                <small className="form-help">Minimum 8 characters, include uppercase, lowercase, and numbers</small>
+              </div>
+              <div>
+                <label className="form-label" htmlFor="confirmPassword">Confirm Password</label>
+                <input id="confirmPassword" name="confirmPassword" className="input-field" type="password" value={formData.confirmPassword} onChange={handleChange} required disabled={loading} />
+              </div>
+            </div>
+
+            <div style={{display:'grid', gap:8, marginTop:12}}>
+              <label style={{display:'flex', gap:8, alignItems:'center'}}><input type="checkbox" name="twoFAEnabled" checked={formData.twoFAEnabled} onChange={handleChange} disabled={loading} /> Enable Two-Factor Authentication (Recommended)</label>
+              <label style={{display:'flex', gap:8, alignItems:'center'}}><input type="checkbox" name="agreeToTerms" checked={formData.agreeToTerms} onChange={handleChange} required disabled={loading} /> I agree to the <a href="#" target="_blank" className="link-muted">Terms & Conditions</a> and <a href="#" className="link-muted">Privacy Policy</a></label>
+              <label style={{display:'flex', gap:8, alignItems:'center'}}><input type="checkbox" name="subscribeNewsletter" checked={formData.subscribeNewsletter} onChange={handleChange} disabled={loading} /> Subscribe to the newsletter</label>
+            </div>
+
+            <div style={{marginTop:14}}>
+              <button type="submit" className="btn-fancy" disabled={loading}>{loading ? <><i className="fa fa-spinner fa-spin"></i> Creating Account...</> : <><i className="fa fa-user-plus"></i> Create Account</>}</button>
+            </div>
+          </form>
+
+          <p style={{textAlign:'center', marginTop:12}}>Already have an account? <Link to="/login" className="link-muted">Sign in here</Link></p>
         </div>
       </div>
     </section>
