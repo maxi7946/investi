@@ -8,11 +8,27 @@ const cookieParser = require('cookie-parser');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const app = express();
 const cors = require('cors');
-const corsOptions ={
-  origin:'http://localhost:5173', //access-control-allow-origin
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200,
-}
+// Configure CORS to accept local dev and an optional production frontend URL
+const FRONTEND_LOCAL_1 = 'http://localhost:5173';
+const FRONTEND_LOCAL_2 = 'http://localhost:4173';
+const FRONTEND_URL = process.env.FRONTEND_URL || null; // e.g., https://your-site.netlify.app
+const NETLIFY_URL = process.env.NETLIFY_URL || null; // optional
+
+const allowedOrigins = [FRONTEND_LOCAL_1, FRONTEND_LOCAL_2, FRONTEND_URL, NETLIFY_URL].filter(Boolean);
+
+const corsOptions = {
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS policy: This origin is not allowed'), false);
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());

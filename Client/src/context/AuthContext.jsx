@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import apiClient from '../api/axios';
+import apiClient, { axiosPrivate, axiosPublic } from '../api/axios';
 
 const AuthContext = createContext(null);
 
@@ -18,14 +18,14 @@ export const AuthProvider = ({ children }) => {
       try {
         // The cookie is sent automatically by the browser.
         // This endpoint should return user data if the cookie is valid.
-        const response = await apiClient.get('/api/user/portfolio'); // Or a dedicated '/auth/me' endpoint
+        const response = await axiosPrivate.get('/api/user/portfolio'); // Or a dedicated '/auth/me' endpoint
 
         // A successful response means we have a valid session.
         // We need to get the full user object. Let's assume a /api/auth/me endpoint exists
         // For now, we'll simulate getting the user from another call or assume portfolio has it.
         // A better approach is a dedicated `/api/auth/me` endpoint that returns the user object.
         // Let's assume we have one for this example.
-        const userResponse = await apiClient.get('/api/auth/me'); // You would need to create this endpoint
+        const userResponse = await axiosPrivate.get('/api/auth/me'); // You would need to create this endpoint
 
         if (userResponse.data) {
             setUser(userResponse.data);
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password, rememberMe) => {
     try {
-      const response = await apiClient.post('/api/auth/login', { email, password, rememberMe });
+      const response = await axiosPrivate.post('/api/auth/login', { email, password, rememberMe });
       const userData = response.data.user;
 
       setUser(userData);
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (formData) => {
     try {
-      const response = await apiClient.post('/api/auth/register', formData);
+      const response = await axiosPublic.post('/api/auth/register', formData);
       // The backend sends a success message. The user will be redirected to login.
       return { success: true, message: response.data.message };
     } catch (error) {
@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await apiClient.post('/api/auth/logout');
+      await axiosPrivate.post('/api/auth/logout');
     } catch (error) {
       console.error('Logout failed on server:', error);
     } finally {
